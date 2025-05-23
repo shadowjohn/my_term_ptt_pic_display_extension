@@ -371,7 +371,7 @@ function run_3wa_term_ptt_cc() {
                     if (window['wh']['width'] > window['wh']['height']) {
                         if (parseInt(e.data._this.str_replace("px", "", $(this).css('width'))) > parseInt(e.data._this.str_replace("px", "", $(this).css('height')))) {
 
-                            console.log('ww1：一般電腦螢幕，橫圖');
+                            //console.log('ww1：一般電腦螢幕，橫圖');
                             $("#show_pic_div_img_mouseover_show").css({
                                 'position': 'fixed',
                                 'pointer-events': 'none',
@@ -388,7 +388,7 @@ function run_3wa_term_ptt_cc() {
                         }
                         else {
                             //一般電腦螢幕-直圖
-                            console.log('ww2：一般電腦螢幕，直圖');
+                            //console.log('ww2：一般電腦螢幕，直圖');
                             $("#show_pic_div_img_mouseover_show").css({
                                 'position': 'fixed',
                                 'pointer-events': 'none',
@@ -408,7 +408,7 @@ function run_3wa_term_ptt_cc() {
                     else {
                         //手機直螢幕-橫圖
                         if (parseInt(e.data._this.str_replace("px", "", $(this).css('width'))) > parseInt(e.data._this.str_replace("px", "", $(this).css('height')))) {
-                            console.log('ww3：手機直螢幕-橫圖');
+                            //console.log('ww3：手機直螢幕-橫圖');
                             $("#show_pic_div_img_mouseover_show").css({
                                 'position': 'fixed',
                                 'pointer-events': 'none',
@@ -425,7 +425,7 @@ function run_3wa_term_ptt_cc() {
                             });
                         }
                         else {
-                            console.log('ww4：手機直螢幕-直圖');
+                            //console.log('ww4：手機直螢幕-直圖');
                             $("#show_pic_div_img_mouseover_show").css({
                                 'position': 'fixed',
                                 'pointer-events': 'none',
@@ -555,13 +555,13 @@ function run_3wa_term_ptt_cc() {
             }
             setInterval(function () {
                 $("a").each(function (i, dom) {
-                    console.log(dom);
+                    //console.log(dom);
                     var jqDom = $(dom);
 
                     if (jqDom.attr('my_3wa_term_ptt_cc_isCheckImg') != null) return;
                     jqDom.attr('my_3wa_term_ptt_cc_isCheckImg', "checked!"); // 有檢查過了
                     var href = jqDom.attr('href');
-                    console.log(window['my_3wa_func']);
+                    //console.log(window['my_3wa_func']);
                     if (window['my_3wa_func'].method.is_string_like(href, "%i.imgur.com%") && window['my_3wa_func'].method.is_string_like(href, "%.jpg")) {
                         var mn = window['my_3wa_func'].method.mainname(href);
                         // 修正網址
@@ -627,14 +627,14 @@ function run_3wa_term_ptt_cc() {
                                     $("#" + ee.data.myWid).remove();
                                 });
                                 $("#" + myWid + " img[reqc='theimg']").off().bind("load", { "myWid": myWid }, function (ee) {
-                                    console.log("before: " + $(this).css('width'));
+                                    //console.log("before: " + $(this).css('width'));
                                     $("#" + myWid + " img[reqc='theimgloading']").hide();
                                     $("#" + myWid + " img[reqc='theimg']").show();
                                     $(this).css({
                                         'max-width': '500px',
                                         'max-height': '500px'
                                     });
-                                    console.log("after: " + $(this).css('width'));
+                                    //console.log("after: " + $(this).css('width'));
                                     $("#" + ee.data.myWid).css({
                                         "width": $(this).css('width'),
                                         "height": $(this).css('height')
