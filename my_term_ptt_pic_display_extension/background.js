@@ -554,12 +554,16 @@ function run_3wa_term_ptt_cc() {
                 return this;
             }
             setInterval(function () {
+                var isFoundURL = [];
                 $("a").each(function (i, dom) {
                     //console.log(dom);
                     var jqDom = $(dom);
 
-                    if (jqDom.attr('my_3wa_term_ptt_cc_isCheckImg') != null) return;
-                    jqDom.attr('my_3wa_term_ptt_cc_isCheckImg', "checked!"); // 有檢查過了
+                    if (jqDom.attr('my_3wa_term_ptt_cc_isCheckImg') != null) {
+                        isFoundURL.push(jqDom.attr('req_url'));
+                        return;
+                    }
+                    jqDom.attr('my_3wa_term_ptt_cc_isCheckImg', "checked!"); // 有檢查過了                    
                     var href = jqDom.attr('href');
                     //console.log(window['my_3wa_func']);
                     if (window['my_3wa_func'].method.is_string_like(href, "%i.imgur.com%") && window['my_3wa_func'].method.is_string_like(href, "%.jpg")) {
@@ -587,12 +591,26 @@ function run_3wa_term_ptt_cc() {
                         if (window['my_3wa_func'].method.is_string_like(href, "%" + checkURL + "%") && whilePicsSites[checkURL]['needProxy']) {
                             IMGURL = `https://proxy.duckduckgo.com/iu/?u=${href}`;
                         }
-                    }                    
+                    }
+
+                    jqDom.attr('req_url', IMGURL);
 
                     if (window['my_3wa_func'].method.in_array(window['my_3wa_func'].method.subname(href).toLowerCase(), ["jpg", "jpeg", "png", "gif"])) {
 
                         // 將圖片直接插到網址列前
-                        jqDom.before(`<p><img src="${IMGURL}" style="width:500px;"></p>`);
+                        // term 得用另一種技巧
+                        if (location.href.indexOf("https://www.ptt.cc/") == 0) {
+                            jqDom.before(`<span reqc="spantheimg" req_url="${IMGURL}"><img src="${IMGURL}" style="width:500px;"><br></span>`);
+                        }
+                        else if (location.href.indexOf("https://term.ptt.cc/") == 0) {
+                            // term.ptt.cc 先用滑鼠過去的就好~_~
+                            //var datarow = $(this).closest("span").attr('data-row');
+                            // 重複的不要加
+                            //if ($(`span[reqc="spantheimg"][req_url="${IMGURL}"]`).length == 0) {
+                            //    jqDom.closest("div").prepend(`<span reqc="spantheimg" data-type="bbsline" data-row="${datarow}" req_url="${IMGURL}"><img src="${IMGURL}" style="width:500px;"><br></span>`);
+                            //}
+                        }
+                        isFoundURL.push(IMGURL);
 
                         jqDom.off().mouseleave(function () {
                             $("div[id^='myW_']").remove();
@@ -600,8 +618,8 @@ function run_3wa_term_ptt_cc() {
                         jqDom.mouseover(function (e) {
                             $("div[id^='myW_']").remove();
                             var href = $(this).attr('href');
-                            
-                            
+
+
 
                             window['my_3wa_func'].method.myW(`
                         <div style="width:auto;pointer-events: none;">
@@ -644,11 +662,22 @@ function run_3wa_term_ptt_cc() {
                                 });
                                 window['myWTimeout'] = setTimeout(function () {
                                     $("#" + myWid).remove();
-                                },3000);
+                                }, 3000);
                             });
                         });
                     }
                 });
+
+                // 移除不在畫面的資料
+                $("span[reqc='spantheimg']").each(function (index, dom) {
+                    var imgurl = $(dom).attr('req_url');
+                    console.log(imgurl);
+                    console.log(isFoundURL);
+                    if (!window['my_3wa_func'].method.in_array(imgurl, isFoundURL)) {
+                        $(dom).remove();
+                    }
+                });
+
             }, 300);
         }
     };
