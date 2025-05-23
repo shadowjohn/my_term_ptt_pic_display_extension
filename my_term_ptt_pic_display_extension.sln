@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "my_term_ptt_pic_display_extension", ".", "{7189A234-0BA5-49BB-9CF1-1C1DE2DB98D1}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_9555"
+		Debug.AspNetCompiler.PhysicalPath = "..\my_term_ptt_pic_display_extension\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_9555\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_9555"
+		Release.AspNetCompiler.PhysicalPath = "..\my_term_ptt_pic_display_extension\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_9555\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "9555"
+		SlnRelativePath = "..\my_term_ptt_pic_display_extension\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7189A234-0BA5-49BB-9CF1-1C1DE2DB98D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7189A234-0BA5-49BB-9CF1-1C1DE2DB98D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A5BAC5A-E1BF-416C-9565-044AC3C5A200}
+	EndGlobalSection
+EndGlobal
