@@ -2,9 +2,9 @@
 用 brave 或 chrome 連 ptt 時，滑鼠移到 link 可以直接顯示圖片或影片
 
 <h2>功能：</h2>
-　　總之就是一個可以在 ptt.cc 即時看圖的外掛
-當網頁是：term.ptt.cc 或 www.ptt.cc 時
-遇到 jpg、jpeg、png、gif 直接把圖片插到網址列之前
+　　總之就是一個可以在 ptt.cc 即時看圖的外掛<br>
+當網頁是：term.ptt.cc 或 www.ptt.cc 時<br>
+遇到 jpg、jpeg、png、gif 直接把圖片插到網址列之前<br>
 網址列滑鼠移過去也會顯示浮動圖片
 
 <br>
