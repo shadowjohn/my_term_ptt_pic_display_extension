@@ -25,7 +25,8 @@
 <br><br>
 <h2>相依套件：</h2>
 	jQuery 3.7.1<br>
-
+	第三方解  imgur.com CORS proxy: https://proxy.duckduckgo.com <br>
+<br>
 <img src="screenshot/s1.png">
 <p align="center">執行前</p>
 <br>
