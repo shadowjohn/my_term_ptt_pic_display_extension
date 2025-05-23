@@ -29,7 +29,7 @@
 <img src="screenshot/s1.png">
 <p align="center">執行前</p>
 <br>
-<img src="screenshot/s2.png">
+<img src="screenshot/s3.png">
 <p align="center">執行後</p>
 
 原始檔下載：<br>
