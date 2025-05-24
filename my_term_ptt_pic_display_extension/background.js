@@ -518,27 +518,52 @@ function run_3wa_term_ptt_cc() {
                 func(id);
                 return id;
             },
-            "myAjax_async": function (url, postdata, dom, func) {
-                var method = "POST";
-                if (postdata == "") {
-                    method = "GET";
+            "myDivSliderLeftOn": function (html, callback) {
+                $("#divMySliderLeft").remove();
+                $("body").append(`<div id='divMySliderLeft' class='my-slider-container'></div>`);
+                $("#divMySliderLeft").append(`
+<style id="mySliderStyle" nonce="gg">
+          .my-slider-container {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;           
+            min-height: 300px;
+            height:auto;
+            background: #fff;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+            transition: right 0.3s ease;
+            z-index: 9999;
+            overflow-y: auto;
+          }
+          .my-slider-container.active {
+            right: 0;
+          }
+          .my-slider-close-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            padding: 4px 8px;
+            background: #f44336;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+          }
+        </style>
+`);
+                $("#divMySliderLeft").append(html);
+                // 強制瀏覽器渲染後再套用 transition
+                setTimeout(() => {
+                    $("#divMySliderLeft").addClass('active');
+                }, 10);
+                if (callback != null && typeof (callback) == "function") {
+                    callback("divMySliderLeft");
                 }
-                $.ajax({
-                    url: url,
-                    type: method,
-                    data: postdata,
-                    async: true,
-                    dataType: 'html',
-                    success: function (html) {
-                        if (dom != "") {
-                            $(dom).html(html);
-                        }
-                        func(html);
-                        my_gc(html);
-                        html = null;
-                    }
-                });
-            }
+            }, // 我的滑動視窗-開啟
+            "myDivSliderLeftOff": function () {
+                $("#divMySliderLeft").remove();
+            } // 我的滑動視窗-關閉
         },
         "interval": { //用來放一堆無腦 interval 的好地方            
         },
@@ -572,6 +597,18 @@ function run_3wa_term_ptt_cc() {
                         jqDom.attr('href', `https://i.imgur.com/${mn}.jpeg`);
                         jqDom.text(`https://i.imgur.com/${mn}.jpeg`);
                     }
+
+                    // https://meee.com.tw/KtJH3cW -> https://i.meee.com.tw/KtJH3cW.jpg
+                    if (window['my_3wa_func'].method.is_string_like(href, "https://meee.com.tw/%")) {
+                        console.log(href);
+                        var mn = window['my_3wa_func'].method.end(href.split("/"));
+                        console.log(mn);
+                        // 修正網址
+                        jqDom.attr('href', `https://i.meee.com.tw/${mn}.jpg`);
+                        jqDom.text(`https://i.meee.com.tw/${mn}.jpg`);
+                    }
+
+
                     jqDom = $(dom);
                     href = jqDom.attr('href');
                     // 修正網址
@@ -581,7 +618,10 @@ function run_3wa_term_ptt_cc() {
 
 
                     var whilePicsSites = {
-                        "upload.cc": { "needProxy": false },
+
+                        "i.meee.com.tw": { "needProxy": false },
+                        "tinyurl.com": { "needProxy": true },
+                        "upload.cc": { "needProxy": true },
                         "i.imgur.com": { "needProxy": true },
                         "3wa.tw": { "needProxy": false }
                     };
@@ -595,12 +635,18 @@ function run_3wa_term_ptt_cc() {
 
                     jqDom.attr('req_url', IMGURL);
 
-                    if (window['my_3wa_func'].method.in_array(window['my_3wa_func'].method.subname(href).toLowerCase(), ["jpg", "jpeg", "png", "gif"])) {
+                    if (window['my_3wa_func'].method.in_array(window['my_3wa_func'].method.subname(href).toLowerCase(), ["jpg", "jpeg", "png", "gif"]) ||
+                        window['my_3wa_func'].method.is_string_like(href, "%tinyurl.com%")  // tinyurl 也會有圖片
+                    ) {
 
                         // 將圖片直接插到網址列前
                         // term 得用另一種技巧
                         if (location.href.indexOf("https://www.ptt.cc/") == 0) {
-                            jqDom.before(`<span reqc="spantheimg" req_url="${IMGURL}"><img src="${IMGURL}" style="width:500px;"><br></span>`);
+                            jqDom.before(`
+                            <span reqc="spantheimg" req_url="${IMGURL}">
+                                <img src="${IMGURL}" style="width:500px;" onerror="$(this).remove();">
+                                <br>
+                            </span>`);
                         }
                         else if (location.href.indexOf("https://term.ptt.cc/") == 0) {
                             // term.ptt.cc 先用滑鼠過去的就好~_~
@@ -649,8 +695,9 @@ function run_3wa_term_ptt_cc() {
                                     $("#" + myWid + " img[reqc='theimgloading']").hide();
                                     $("#" + myWid + " img[reqc='theimg']").show();
                                     $(this).css({
-                                        'max-width': '500px',
-                                        'max-height': '500px'
+                                        'opacity': 0.95,
+                                        'max-width': '700px',
+                                        'max-height': '700px'
                                     });
                                     //console.log("after: " + $(this).css('width'));
                                     $("#" + ee.data.myWid).css({
@@ -659,6 +706,13 @@ function run_3wa_term_ptt_cc() {
                                     });
 
                                     $("#" + ee.data.myWid).center();
+                                    // 感覺偏右會比較好
+                                    $("#" + ee.data.myWid).css({
+                                        "opacity": 0.95, // 加上透明
+                                        "left": "auto",
+                                        "right": "25%"
+                                    });
+
                                 });
                                 window['myWTimeout'] = setTimeout(function () {
                                     $("#" + myWid).remove();
