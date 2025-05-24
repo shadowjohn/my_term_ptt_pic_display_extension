@@ -27,6 +27,14 @@
 	jQuery 3.7.1<br>
 	第三方解  imgur.com CORS proxy: https://proxy.duckduckgo.com <br>
 <br>
+<br>
+<h2>使用 Proxy 帶入的圖片網址：</h2>
+    "i.meee.com.tw": { "needProxy": false },
+    "tinyurl.com": { "needProxy": true },
+    "upload.cc": { "needProxy": true },
+    "i.imgur.com": { "needProxy": true },
+    "3wa.tw": { "needProxy": false }
+<br>
 <img src="screenshot/s1.png">
 <p align="center">執行前</p>
 <br>

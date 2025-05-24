@@ -618,7 +618,6 @@ function run_3wa_term_ptt_cc() {
 
 
                     var whilePicsSites = {
-
                         "i.meee.com.tw": { "needProxy": false },
                         "tinyurl.com": { "needProxy": true },
                         "upload.cc": { "needProxy": true },
