@@ -1,57 +1,78 @@
 # my_term_ptt_pic_display_extension
-用 brave 或 chrome 連 ptt 時，滑鼠移到 link 可以直接顯示圖片或影片
 
-<h2>功能：</h2>
-　　總之就是一個可以在 ptt.cc 即時看圖的外掛<br>
-當網頁是：term.ptt.cc 或 www.ptt.cc 時<br>
-遇到 jpg、jpeg、png、gif 直接把圖片插到網址列之前<br>
-網址列滑鼠移過去也會顯示浮動圖片
+> 🖼️ Brave 或 Chrome 上在 PTT (term.ptt.cc / www.ptt.cc) 閱讀文章時，滑鼠移動到圖片連結即可預覽圖片／GIF（影片支援預定中）
 
-<br>
-<br>
-<h2>程式開發：</h2>
-	作者：羽山秋人 (https://3wa.tw/)
-<br>
-<br>
-<h2>License：</h2>
-	完全免費的 MIT License
-<br>
-<br>
-<h2>最初更新時間：</h2>
-	2025-05-23
-<br>
-<h2>版本：</h2>
-    V0.01 (2025-05-23)<br>
-<br><br>
-<h2>相依套件：</h2>
-	jQuery 3.7.1<br>
-	第三方解  imgur.com CORS proxy: https://proxy.duckduckgo.com <br>
-<br>
-<br>
-<h2>使用 Proxy 帶入的圖片網址：</h2>
-    "i.meee.com.tw": { "needProxy": false },
-    "tinyurl.com": { "needProxy": true },
-    "upload.cc": { "needProxy": true },
-    "i.imgur.com": { "needProxy": true },
-    "3wa.tw": { "needProxy": false }
-<br>
-<img src="screenshot/s1.png">
-<p align="center">執行前</p>
-<br>
-<img src="screenshot/s3.png">
-<p align="center">執行後</p>
+---
 
-原始檔下載：<br>
-(V0.01 Beta) https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.01/my_term_ptt_pic_display_extension.zip <br>
+## 📌 功能特色
+
+這是一個可以在 [PTT 網頁版](https://term.ptt.cc) / [www.ptt.cc](https://www.ptt.cc) 即時顯示圖片連結預覽的瀏覽器擴充功能（支援 Brave / Chrome）。
+
+- 當滑鼠移動到圖片連結（如 `.jpg`, `.png`, `.gif` 等）上時，會顯示浮動預覽圖片。
+- 圖片會即時插入在文章連結上方，無須開新視窗查看。
+- 支援常見圖片主機，例如 imgur、upload.cc、tinyurl 等。
+
+---
+
+## 🧑‍💻 開發者資訊
+
+- 作者：羽山秋人（[https://3wa.tw/](https://3wa.tw/)）
+- 初版發佈：2025-05-23
+- 授權條款：MIT License（完全免費）
+
+---
+
+## 📦 相依套件
+
+- jQuery 3.7.1
+- CORS Proxy（使用 [DuckDuckGo proxy](https://proxy.duckduckgo.com) 來解決跨域問題）
+
+---
+
+## 🌍 圖片主機支援情況
+
+| 主機             | 是否需使用 Proxy |
+|------------------|------------------|
+| i.meee.com.tw    | 否               |
+| tinyurl.com      | 是               |
+| upload.cc        | 是               |
+| i.imgur.com      | 是               |
+| 3wa.tw           | 否               |
+
+---
+
+## 🖼️ 使用前後效果
+
+<div align="center">
+  <img src="screenshot/s1.png" alt="執行前">
+  <p>執行前</p>
+  <br>
+  <img src="screenshot/s3.png" alt="執行後">
+  <p>執行後</p>
+</div>
+
+---
+
+## 📥 下載與安裝
+
+下載最新版本：
+- [V0.01 Beta 下載連結（2025-05-23）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.01/my_term_ptt_pic_display_extension.zip)
+
+---
+
+## 🗒️ 版本紀錄
+
+V0.01 (2025-05-23)
+- 初始版本發佈
+
+---
+
+## 🚧 TODO 待辦項目
+
+- [ ] 支援影片連結預覽（如 YouTube、mp4 影片）
+- [ ] 更細緻的浮動樣式設計
+- [ ] 設定選項（是否啟用 Proxy 等）
 
 
-<br>
-<br>
-<h2>版本說明：</h2>
-<pre>
-  (2025-05-23) V0.01 版：
-  初版
 
-<h2>Todo：</h2>
-<ul>
-  <li>1、影片播放功能，如 Youtube、mp4 link</li>
+
