@@ -71,6 +71,12 @@ function run_3wa_term_ptt_cc() {
             "strlen": function (string) {
                 var str = string + ''; var i = 0, chr = '', lgth = 0; if (!this.php_js || !this.php_js.ini || !this.php_js.ini['unicode.semantics'] || this.php_js.ini['unicode.semantics'].local_value.toLowerCase() !== 'on') { return string.length; } var getWholeChar = function (str, i) { var code = str.charCodeAt(i); var next = '', prev = ''; if (0xD800 <= code && code <= 0xDBFF) { if (str.length <= (i + 1)) { throw 'High surrogate without following low surrogate'; } next = str.charCodeAt(i + 1); if (0xDC00 > next || next > 0xDFFF) { throw 'High surrogate without following low surrogate'; } return str.charAt(i) + str.charAt(i + 1); } else if (0xDC00 <= code && code <= 0xDFFF) { if (i === 0) { throw 'Low surrogate without preceding high surrogate'; } prev = str.charCodeAt(i - 1); if (0xD800 > prev || prev > 0xDBFF) { throw 'Low surrogate without preceding high surrogate'; } return false; } return str.charAt(i); }; for (i = 0, lgth = 0; i < str.length; i++) { if ((chr = getWholeChar(str, i)) === false) { continue; } lgth++; } return lgth;
             },
+            "arduino_map": function (x, in_min, in_max, out_min, out_max) {
+                //x = 輸入值
+                //in 如 0~255
+                //out 如 0~1024
+                return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+            },
             "get_between": function ($data, $s_begin, $s_end) {
                 /*
                   $a = "abcdefg";
@@ -578,6 +584,22 @@ function run_3wa_term_ptt_cc() {
                 this.css("left", ($(window).width() - this.width()) / 2 + $(window).scrollLeft() + "px");
                 return this;
             }
+            $(window).bind("keydown", function (e) {
+                // 如果是按上、下、左、右鍵、Enter，移除 term 圖片
+                if (location.href.indexOf("https://term.ptt.cc/") == 0) {
+                    if ((e.keyCode >= 37 && e.keyCode <= 40) || e.keyCode == 13) {
+                        // 只要鍵盤按就移除
+                        $("span[reqc='spantheimg']").each(function (index, dom) {
+                            var imgurl = $(dom).attr('req_url');
+                            //console.log(imgurl);
+                            //console.log(isFoundURL);
+                            //if (!window['my_3wa_func'].method.in_array(imgurl, isFoundURL)) {
+                            $(dom).remove();
+                            //}
+                        });
+                    }
+                }
+            });
             setInterval(function () {
                 var isFoundURL = [];
                 $("a").each(function (i, dom) {
@@ -600,9 +622,9 @@ function run_3wa_term_ptt_cc() {
 
                     // https://meee.com.tw/KtJH3cW -> https://i.meee.com.tw/KtJH3cW.jpg
                     if (window['my_3wa_func'].method.is_string_like(href, "https://meee.com.tw/%")) {
-                        console.log(href);
+                        //console.log(href);
                         var mn = window['my_3wa_func'].method.end(href.split("/"));
-                        console.log(mn);
+                        //console.log(mn);
                         // 修正網址
                         jqDom.attr('href', `https://i.meee.com.tw/${mn}.jpg`);
                         jqDom.text(`https://i.meee.com.tw/${mn}.jpg`);
@@ -649,11 +671,13 @@ function run_3wa_term_ptt_cc() {
                         }
                         else if (location.href.indexOf("https://term.ptt.cc/") == 0) {
                             // term.ptt.cc 先用滑鼠過去的就好~_~
-                            //var datarow = $(this).closest("span").attr('data-row');
+
                             // 重複的不要加
-                            //if ($(`span[reqc="spantheimg"][req_url="${IMGURL}"]`).length == 0) {
-                            //    jqDom.closest("div").prepend(`<span reqc="spantheimg" data-type="bbsline" data-row="${datarow}" req_url="${IMGURL}"><img src="${IMGURL}" style="width:500px;"><br></span>`);
-                            //}
+                            /*var datarow = $(this).closest("span").attr('data-row');
+                            if ($(`span[reqc="spantheimg"][req_url="${IMGURL}"]`).length == 0) {
+                                jqDom.closest("div").prepend(`<span reqc="spantheimg" data-type="bbsline" data-row="${datarow}" req_url="${IMGURL}"><img src="${IMGURL}" style="width:500px;"><br></span>`);
+                            } 
+                            */
                         }
                         isFoundURL.push(IMGURL);
 
@@ -704,13 +728,9 @@ function run_3wa_term_ptt_cc() {
                                         "height": $(this).css('height')
                                     });
 
-                                    $("#" + ee.data.myWid).center();
+                                    //$("#" + ee.data.myWid).center();
                                     // 感覺偏右會比較好
-                                    $("#" + ee.data.myWid).css({
-                                        "opacity": 0.95, // 加上透明
-                                        "left": "auto",
-                                        "right": "25%"
-                                    });
+
 
                                 });
                                 window['myWTimeout'] = setTimeout(function () {
@@ -718,18 +738,41 @@ function run_3wa_term_ptt_cc() {
                                 }, 3000);
                             });
                         });
+                        jqDom.bind("mousemove", function (e) {
+                            // 永遠保持在滑鼠右邊
+                            var mouse_x = parseInt(e.originalEvent.pageX);
+                            var mouse_y = parseInt(e.originalEvent.pageY);
+                            window['wh'] = window['my_3wa_func'].method.getWindowSize();
+
+                            //依螢幕大小，如 0~1024 圖片高位置是 30px ~ 350px
+                            mouse_y = window['my_3wa_func'].method.arduino_map(mouse_y, 0, window['wh']['height'], 30, 350);
+                            // 如果 myW 的高加上 350 超過螢幕高，還是要上移
+                            if ($("div[id^='myW']").height() + mouse_y > window['wh']['height']) {
+                                mouse_y = window['wh']['height'] - $("div[id^='myW']").height() - 70;
+                            }
+                                
+                            $("div[id^='myW']").css({
+                                "opacity": 0.95, // 加上透明
+                                "left": (mouse_x + 60) + 'px',
+                                "top": mouse_y + 'px',
+                                "bottom": "auto"
+                            });
+                        
+                            
+                        });
                     }
                 });
 
                 // 移除不在畫面的資料
                 $("span[reqc='spantheimg']").each(function (index, dom) {
                     var imgurl = $(dom).attr('req_url');
-                    console.log(imgurl);
-                    console.log(isFoundURL);
+                    //console.log(imgurl);
+                    //console.log(isFoundURL);
                     if (!window['my_3wa_func'].method.in_array(imgurl, isFoundURL)) {
                         $(dom).remove();
                     }
                 });
+
 
             }, 300);
         }
