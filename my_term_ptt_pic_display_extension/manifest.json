@@ -5,13 +5,18 @@
   "author": "羽山秋人 (https://3wa.tw)",
   "version": "0.01",
   "description": "用 brave 或 chrome 連 ptt 時，滑鼠移到 link 可以直接顯示圖片或影片",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
   "content_security_policy": {
 
   },
   "host_permissions": [
     "https://term.ptt.cc/*",
     "https://www.ptt.cc/*"
-  ],  
+  ],
   "permissions": [
     "scripting",
     "activeTab"
