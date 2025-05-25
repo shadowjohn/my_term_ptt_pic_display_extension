@@ -589,14 +589,8 @@ function run_3wa_term_ptt_cc() {
                 if (location.href.indexOf("https://term.ptt.cc/") == 0) {
                     if ((e.keyCode >= 37 && e.keyCode <= 40) || e.keyCode == 13) {
                         // 只要鍵盤按就移除
-                        $("span[reqc='spantheimg']").each(function (index, dom) {
-                            var imgurl = $(dom).attr('req_url');
-                            //console.log(imgurl);
-                            //console.log(isFoundURL);
-                            //if (!window['my_3wa_func'].method.in_array(imgurl, isFoundURL)) {
-                            $(dom).remove();
-                            //}
-                        });
+                        $("span[reqc='spantheimg']").remove();                        
+                        $("div[id^='myW']").remove();
                     }
                 }
             });
