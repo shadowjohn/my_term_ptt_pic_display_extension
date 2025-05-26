@@ -49,6 +49,9 @@
   <br>
   <img src="screenshot/s3.png" alt="執行後">
   <p>執行後</p>
+  <br>
+  <img src="screenshot/s6.png" alt="執行後">
+  <p>執行後</p>
 </div>
 
 ---
