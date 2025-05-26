@@ -6,7 +6,7 @@
 
 ## 📌 功能特色
 
-這是一個可以在 [PTT 網頁版](https://term.ptt.cc) / [www.ptt.cc](https://www.ptt.cc) 即時顯示圖片連結預覽的瀏覽器擴充功能（支援 Brave / Chrome）。
+這是一個可以在 [term.ptt.cc](https://term.ptt.cc) / [www.ptt.cc](https://www.ptt.cc) 即時顯示圖片連結預覽的瀏覽器擴充功能（支援 Brave / Chrome）。
 
 - 當滑鼠移動到圖片連結（如 `.jpg`, `.png`, `.gif` 等）上時，會顯示浮動預覽圖片。
 - 圖片會即時插入在文章連結上方，無須開新視窗查看。
