@@ -58,6 +58,9 @@
 
 ## 📥 下載與安裝
 
+Google 應用程式線上商店
+- [安裝](https://chromewebstore.google.com/detail/mytermpttpicdisplayextens/jenpjbjfghfafojahmldgmkoefacpifa)
+
 下載最新版本：
 - [V0.01 Beta 下載連結（2025-05-23）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.01/my_term_ptt_pic_display_extension.zip)
 
