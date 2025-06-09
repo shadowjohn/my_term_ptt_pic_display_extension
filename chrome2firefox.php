@@ -75,6 +75,10 @@ if (isset($manifest['host_permissions'])) {
     unset($manifest['host_permissions']);
 }
 
+// 修正 manifest 裡 content_security_policy
+$manifest['content_security_policy'] = "script-src 'self'; object-src 'self'";
+unset($manifest['action']);
+
 // 輸出新的 manifest.json
 file_put_contents("$destDir/manifest.json", json_encode($manifest, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 
