@@ -3,7 +3,7 @@
   "action": {},
   "manifest_version": 3,
   "author": "羽山秋人 (https://3wa.tw)",
-  "version": "0.02",
+  "version": "0.0.2",
   "description": "用 brave 或 chrome 連 ptt 時，滑鼠移到 link 可以直接顯示圖片或影片",
   "icons": {
     "16": "icons/icon16.png",
