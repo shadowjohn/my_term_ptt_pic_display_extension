@@ -64,14 +64,16 @@ Google 應用程式線上商店
 - [安裝](https://chromewebstore.google.com/detail/mytermpttpicdisplayextens/jenpjbjfghfafojahmldgmkoefacpifa)
 
 下載最新版本：
-- [V0.02 Beta 下載連結（2025-06-06）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.02/my_term_ptt_pic_display_extension.zip)
+- [V0.0.3 Beta 下載連結（2025-06-11）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.0.3/my_term_ptt_pic_display_extension.zip)
 
 下載穩定版本：
-- [V0.01 下載連結（2025-05-23）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.01/my_term_ptt_pic_display_extension.zip)
+- [V0.02 下載連結（2025-06-06）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.02/my_term_ptt_pic_display_extension.zip)
 
 ---
 
 ## 🗒️ 版本紀錄
+V0.0.3 (2025-06-11)
+- 增加圖片預載入功能，避免圖片載入延遲
 
 V0.02 (2025-06-06)
 - 增加設定選單
@@ -86,12 +88,12 @@ V0.01 (2025-05-23)
 
 ## 🚧 TODO 待辦項目
 
-- [✔] 支援影片連結預覽（如 YouTube、mp4 影片）
-- [ ] 更細緻的浮動樣式設計
-- [ ] 設定選項（是否啟用 Proxy 等）
-- [✔] (V0.02) 增加設定選單
-- [✔] (V0.02) 設定選項 在 www.ptt.cc 可以強制關掉圖片預覽功能
-
+- [✔] 1. 支援影片連結預覽（如 YouTube、mp4 影片）
+- [ ] 2. 更細緻的浮動樣式設計
+- [ ] 3. 設定選項（是否啟用 Proxy 等）
+- [✔] (V0.02) 4. 增加設定選單
+- [✔] (V0.02) 5. 設定選項 在 www.ptt.cc 可以強制關掉圖片預覽功能
+- [✔] (V0.0.3) 6. 圖片預載入功能，避免圖片載入延遲
 
 
 
