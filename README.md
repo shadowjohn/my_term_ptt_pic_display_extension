@@ -1,6 +1,6 @@
 # my_term_ptt_pic_display_extension
 
-> 🖼️ Brave、Chrome、Edge 上在 PTT (term.ptt.cc / www.ptt.cc) 閱讀文章時，滑鼠移動到圖片連結即可預覽圖片／GIF（影片支援預定中）
+> 🖼️ Brave、Chrome、Edge、Firefox 上在 PTT (term.ptt.cc / www.ptt.cc) 閱讀文章時，滑鼠移動到圖片連結即可預覽圖片／GIF（影片支援預定中）
 
 ---
 
