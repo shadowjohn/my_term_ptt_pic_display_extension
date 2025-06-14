@@ -61,13 +61,16 @@
 ## 📥 下載與安裝
 
 Google 應用程式線上商店
-- [安裝](https://chromewebstore.google.com/detail/mytermpttpicdisplayextens/jenpjbjfghfafojahmldgmkoefacpifa)
+- [安裝] https://chromewebstore.google.com/detail/mytermpttpicdisplayextens/jenpjbjfghfafojahmldgmkoefacpifa 
+
+(Firefox 線上應用程式商店)
+- [安裝] https://addons.mozilla.org/zh-TW/firefox/addon/my_term_ptt_pic_display_plugin/ 
 
 下載最新版本：
-- [V0.3.0 Beta 下載連結（2025-06-11）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.0/my_term_ptt_pic_display_extension.zip)
+- [V0.3.0 Beta 下載連結（2025-06-11）] https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.0/my_term_ptt_pic_display_extension.zip 
 
 下載穩定版本：
-- [V0.02 下載連結（2025-06-06）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.02/my_term_ptt_pic_display_extension.zip)
+- [V0.02 下載連結（2025-06-06）] https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.02/my_term_ptt_pic_display_extension.zip 
 
 ---
 
