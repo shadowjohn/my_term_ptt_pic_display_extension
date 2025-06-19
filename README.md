@@ -67,14 +67,17 @@ Google 應用程式線上商店
 - [安裝] https://addons.mozilla.org/zh-TW/firefox/addon/my_term_ptt_pic_display_plugin/ 
 
 下載最新版本：
-- [V0.3.1 Beta 下載連結（2025-06-17）] https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.1/my_term_ptt_pic_display_extension.zip 
+- [V0.3.2 Beta 下載連結（2025-06-19）] https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.2/my_term_ptt_pic_display_extension.zip 
 
 下載穩定版本：
-- [V0.3.0 Beta 下載連結（2025-06-11）] https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.0/my_term_ptt_pic_display_extension.zip 
+- [V0.3.1 下載連結（2025-06-17）] https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.1/my_term_ptt_pic_display_extension.zip 
 
 ---
 
 ## 🗒️ 版本紀錄
+V0.3.2 (2025-06-19)
+- 滑鼠移動到圖片連結時，展開圖片，移開馬上關掉
+
 V0.3.1 (2025-06-17)
 - meee.com.tw 網址後面如果是 .gif 誤判加上 .jpeg 的問題
 
@@ -101,6 +104,7 @@ V0.01 (2025-05-23)
 - [✔] (V0.02) 5. 設定選項 在 www.ptt.cc 可以強制關掉圖片預覽功能
 - [✔] (V0.3.0) 6. 圖片預載入功能，避免圖片載入延遲
 - [✔] (V0.3.1) 7. meee.com.tw 網址後面如果是 .gif 誤判加上 .jpeg 的問題
+- [✔] (V0.3.2) 8. 滑鼠移動到圖片連結時，展開圖片，移開馬上關掉
 
 
 
