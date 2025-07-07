@@ -67,14 +67,17 @@ Google 應用程式線上商店
 - [安裝] https://addons.mozilla.org/zh-TW/firefox/addon/my_term_ptt_pic_display_plugin/ 
 
 下載最新版本：
-- [V0.3.3 Beta 下載連結（2025-06-24）] https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.3/my_term_ptt_pic_display_extension.zip 
+- [V0.3.4 Beta 下載連結（2025-07-07）] https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.4/my_term_ptt_pic_display_extension.zip 
 
 下載穩定版本：
-- [V0.3.2 下載連結（2025-06-19）] https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.2/my_term_ptt_pic_display_extension.zip 
+- [V0.3.3 下載連結（2025-06-24）] https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.3/my_term_ptt_pic_display_extension.zip 
 
 ---
 
 ## 🗒️ 版本紀錄
+V0.3.4 (2025-07-07)
+- 修正彈出的圖片，不要有 alpha 背景
+
 V0.3.3 (2025-06-24)
 - 避免修改原始網址，以免影響文章格式
 
@@ -109,6 +112,7 @@ V0.01 (2025-05-23)
 - [✔] (V0.3.1) 7. meee.com.tw 網址後面如果是 .gif 誤判加上 .jpeg 的問題
 - [✔] (V0.3.2) 8. 滑鼠移動到圖片連結時，展開圖片，移開馬上關掉
 - [✔] (V0.3.3) 9. 避免修改原始網址，以免影響文章格式
+- [✔] (V0.3.4) 10. 修正彈出的圖片，不要有 alpha 背景
 
 
 
