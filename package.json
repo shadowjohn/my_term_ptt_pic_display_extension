@@ -1,0 +1,12 @@
+{
+  "name": "my_term_ptt_pic_display_extension",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "chai": "^4.3.7"
+  },
+  "scripts": {
+    "test": "mocha --exit"
+  }
+}
