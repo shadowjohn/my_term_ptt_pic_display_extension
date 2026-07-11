@@ -1,12 +1,12 @@
 # my_term_ptt_pic_display_extension
 
-> 🖼️ Brave、Chrome、Edge、Firefox 上在 PTT (term.ptt.cc / www.ptt.cc) 閱讀文章時，滑鼠移動到圖片連結即可預覽圖片／GIF（影片支援預定中）
+> 🖼️ 在 Brave、Chrome、Edge、Firefox 上瀏覽 PTT（term.ptt.cc / www.ptt.cc）時，可直接預覽圖片、GIF 與影片連結。
 
 ---
 
 ## 📌 功能特色
 
-這是一個可以在 [term.ptt.cc](https://term.ptt.cc) / [www.ptt.cc](https://www.ptt.cc) 即時顯示圖片連結預覽的瀏覽器擴充功能（支援 Brave / Chrome）。
+這是一個可以在 [term.ptt.cc](https://term.ptt.cc) / [www.ptt.cc](https://www.ptt.cc) 即時顯示圖片與影片連結預覽的瀏覽器擴充功能，支援 Brave、Chrome、Edge 與 Firefox。
 
 - 當滑鼠移動到圖片連結（如 `.jpg`, `.png`, `.gif` 等）上時，會顯示浮動預覽圖片。
 - 圖片會即時插入在文章連結上方，無須開新視窗查看。
@@ -19,6 +19,10 @@
 - 作者：羽山秋人（[https://3wa.tw/](https://3wa.tw/)）
 - 初版發佈：2025-05-23
 - 授權條款：MIT License（完全免費）
+
+## 🤝 貢獻者
+
+- [j108251113](https://github.com/j108251113)：在 [PR #2](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/pull/2) 修正快速切換圖片時，舊圖片載入完成後覆蓋新預覽的競態問題，並附上單元測試與測試紀錄。這是專案第一筆由網友主動提交的功能修正，已於 2026-07-11 正式合併。
 
 ---
 
@@ -75,8 +79,8 @@ Google 應用程式線上商店
 ---
 
 ## 🗒️ 版本紀錄
-V0.3.6
-- 合併 PR #2，修正滑鼠快速切換圖片時的預覽競態
+V0.3.6 (2026-07-11)
+- 合併網友 [j108251113](https://github.com/j108251113) 的 [PR #2](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/pull/2)，修正滑鼠快速切換圖片時的預覽競態，並加入單元測試
 - jQuery 升級至 4.0.0 並拆為 `vendor/` 本機檔案
 - 主程式、第三方套件與圖片資產分檔
 - 簡化 Firefox 產生流程與相容性檢查
@@ -123,6 +127,8 @@ V0.01 (2025-05-23)
 - [✔] (V0.3.3) 9. 避免修改原始網址，以免影響文章格式
 - [✔] (V0.3.4) 10. 修正彈出的圖片，不要有 alpha 背景
 - [✔] (V0.3.5) 11. 空白鍵也要關閉圖片預覽
+- [✔] (V0.3.6) 12. 修正快速切換圖片時，舊圖片載入覆蓋新預覽的競態問題（PR #2）
+- [✔] (V0.3.6) 13. jQuery、主程式與圖片資產分檔，並重整 Firefox 產生流程
 
 ---
 
