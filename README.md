@@ -71,10 +71,8 @@ Google 應用程式線上商店
 - [安裝] https://addons.mozilla.org/zh-TW/firefox/addon/my_term_ptt_pic_display_plugin/ 
 
 下載最新版本：
-- [V0.3.5 Beta 下載連結（2025-10-28）] https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.5/my_term_ptt_pic_display_extension.zip 
-
-下載穩定版本：
-- [V0.3.4 下載連結（2025-07-07）] https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.4/my_term_ptt_pic_display_extension.zip 
+- [Chrome / Brave / Edge V0.3.6（2026-07-11）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.6/my_term_ptt_pic_display_extension.zip)
+- [Firefox V0.3.6（2026-07-11）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/firefox/V0.3.6/my_term_ptt_pic_display_extension.zip)
 
 ---
 
