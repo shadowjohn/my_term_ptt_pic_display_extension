@@ -24,7 +24,7 @@
 
 ## 📦 相依套件
 
-- jQuery 3.7.1
+- jQuery 4.0.0（隨 extension 本機封裝，不使用遠端 CDN）
 - CORS Proxy（使用 [DuckDuckGo proxy](https://proxy.duckduckgo.com) 來解決跨域問題）
 
 ---
@@ -75,6 +75,12 @@ Google 應用程式線上商店
 ---
 
 ## 🗒️ 版本紀錄
+V0.3.6
+- 合併 PR #2，修正滑鼠快速切換圖片時的預覽競態
+- jQuery 升級至 4.0.0 並拆為 `vendor/` 本機檔案
+- 主程式、第三方套件與圖片資產分檔
+- 簡化 Firefox 產生流程與相容性檢查
+
 V0.3.5 (2025-10-28)
 - 空白鍵也要關閉圖片預覽
 
@@ -117,6 +123,17 @@ V0.01 (2025-05-23)
 - [✔] (V0.3.3) 9. 避免修改原始網址，以免影響文章格式
 - [✔] (V0.3.4) 10. 修正彈出的圖片，不要有 alpha 背景
 - [✔] (V0.3.5) 11. 空白鍵也要關閉圖片預覽
+
+---
+
+## 🛠️ 開發檢查
+
+```powershell
+npm ci
+npm run check
+```
+
+`npm run check` 會重新產生 Firefox 版本、執行測試，以及檢查 JavaScript / PHP 語法。
 
 
 

@@ -2,3 +2,4 @@
 /.vs
 /Web.config
 node_modules/
+/.playwright-cli

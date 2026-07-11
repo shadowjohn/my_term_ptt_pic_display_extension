@@ -17,6 +17,15 @@
     "https://term.ptt.cc/*",
     "https://www.ptt.cc/*"
   ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": [
+        "https://term.ptt.cc/*",
+        "https://www.ptt.cc/*"
+      ]
+    }
+  ],
   "permissions": [
     "scripting",
     "activeTab"

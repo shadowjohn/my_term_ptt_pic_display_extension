@@ -1,12 +1,14 @@
 {
   "name": "my_term_ptt_pic_display_extension",
-  "version": "0.0.0",
+  "version": "0.3.6",
   "private": true,
   "devDependencies": {
     "mocha": "^10.2.0",
     "chai": "^4.3.7"
   },
   "scripts": {
-    "test": "mocha --exit"
+    "build:firefox": "php chrome2firefox.php",
+    "test": "mocha --exit",
+    "check": "npm run build:firefox && npm test && node --check my_term_ptt_pic_display_extension/background.js && node --check my_term_ptt_pic_display_extension/content.js && node --check firefox_extension/my_term_ptt_pic_display_extension/content.js && php -l chrome2firefox.php"
   }
 }
