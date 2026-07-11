@@ -742,14 +742,11 @@ function run_3wa_term_ptt_cc() {
                     //$("#show_pic_div").corner();
                     var show_url = ($(this).attr('bsrc') != null) ? $(this).attr('bsrc') : $(this).attr('src');
                     var $showDiv = $("#show_pic_div_img_mouseover_show");
-                    // record the currently requested URL so stale onload handlers don't overwrite it
+                    // 記錄目前要求的圖片，避免較慢完成的舊圖片覆蓋新預覽
                     $showDiv.data('currentSrc', show_url);
-
                     var Img = new Image();
                     Img.onload = function () {
-                        // ignore stale image loads
                         if ($showDiv.data('currentSrc') !== this.src) return;
-
                         if (options != null) {
                             var w = "100%";
                             var h = "100%";
@@ -778,7 +775,6 @@ function run_3wa_term_ptt_cc() {
 
                         $showDiv.center();
                     };
-                    // start loading after marking currentSrc
                     Img.src = show_url;
 
                     $showDiv.html("<img src=\"" + show_url + "\" onLoad=\"$('#show_pic_div_img_mouseover_show').center();\" style='pointer-events: none;width:100%;height:100%;'>");

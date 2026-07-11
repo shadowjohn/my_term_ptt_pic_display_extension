@@ -740,8 +740,13 @@ function run_3wa_term_ptt_cc() {
                     }
                     //$("#show_pic_div").center();
                     //$("#show_pic_div").corner();
+                    var show_url = ($(this).attr('bsrc') != null) ? $(this).attr('bsrc') : $(this).attr('src');
+                    var $showDiv = $("#show_pic_div_img_mouseover_show");
+                    // 記錄目前要求的圖片，避免較慢完成的舊圖片覆蓋新預覽
+                    $showDiv.data('currentSrc', show_url);
                     var Img = new Image();
                     Img.onload = function () {
+                        if ($showDiv.data('currentSrc') !== this.src) return;
                         if (options != null) {
                             var w = "100%";
                             var h = "100%";
@@ -751,32 +756,30 @@ function run_3wa_term_ptt_cc() {
                             if (options['height'] != null) {
                                 h = options['height'];
                             }
-                            $("#show_pic_div_img_mouseover_show").css({
+                            $showDiv.css({
                                 "width": "auto",
                                 "height": "auto"
                             });
-                            $('#show_pic_div_img_mouseover_show').html("<img src='" + this.src + "' style='pointer-events:none;width:" + w + ";height:" + h + ";'>");
+                            $showDiv.html("<img src='" + this.src + "' style='pointer-events:none;width:" + w + ";height:" + h + ";'>");
                         }
                         else {
-                            $('#show_pic_div_img_mouseover_show').html("<img src='" + this.src + "' style='pointer-events:none;width:100%;height:100%;'>");
+                            $showDiv.html("<img src='" + this.src + "' style='pointer-events:none;width:100%;height:100%;'>");
                         }
-                        $('#show_pic_div_img_mouseover_show').center();
+                        $showDiv.center();
                         if (this.width > window['wh']['width'] * 80 / 100) {
-                            $('#show_pic_div_img_mouseover_show').html("<img src='" + this.src + "' style='pointer-events:none;width:" + (window['wh']['width'] * 80 / 100) + "px;height:auto;'>");
+                            $showDiv.html("<img src='" + this.src + "' style='pointer-events:none;width:" + (window['wh']['width'] * 80 / 100) + "px;height:auto;'>");
                         }
                         if (this.height > window['wh']['height'] * 77 / 100) {
-                            $('#show_pic_div_img_mouseover_show').html("<img src='" + this.src + "' style='pointer-events:none;width:auto;height:" + (window['wh']['height'] * 77 / 100) + "px;'>");
+                            $showDiv.html("<img src='" + this.src + "' style='pointer-events:none;width:auto;height:" + (window['wh']['height'] * 77 / 100) + "px;'>");
                         }
 
-                        $('#show_pic_div_img_mouseover_show').center();
+                        $showDiv.center();
                     };
-                    Img.src = ($(this).attr('bsrc') != null) ? $(this).attr('bsrc') : $(this).attr('src');
+                    Img.src = show_url;
 
-                    var show_url = ($(this).attr('bsrc') != null) ? $(this).attr('bsrc') : $(this).attr('src');
-
-                    $("#show_pic_div_img_mouseover_show").html("<img src=\"" + show_url + "\" onLoad=\"$('#show_pic_div_img_mouseover_show').center();\" style='pointer-events: none;width:100%;height:100%;'>");
-                    $("#show_pic_div_img_mouseover_show").stop().fadeIn();
-                    $("#show_pic_div_img_mouseover_show").center();
+                    $showDiv.html("<img src=\"" + show_url + "\" onLoad=\"$('#show_pic_div_img_mouseover_show').center();\" style='pointer-events: none;width:100%;height:100%;'>");
+                    $showDiv.stop().fadeIn();
+                    $showDiv.center();
                     return true;
                 });
             },
