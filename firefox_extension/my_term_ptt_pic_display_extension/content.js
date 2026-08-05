@@ -9,9 +9,6 @@ function run_3wa_term_ptt_cc() {
     }
     //只能在 term.ptt.cc 的網站運行
     window['isRun_3wa_term_ptt_cc'] = "YES...loaded";
-    var previewRace = typeof window['myTermPttPreviewRace'] === "function"
-        ? window['myTermPttPreviewRace']()
-        : null;
     function strpos(haystack, needle, offset) { var i = (haystack + '').indexOf(needle, (offset || 0)); return i === -1 ? false : i; }
     function substr(str, start, len) { var i = 0, allBMP = true, es = 0, el = 0, se = 0, ret = ''; str += ''; var end = str.length; this.php_js = this.php_js || {}; this.php_js.ini = this.php_js.ini || {}; switch ((this.php_js.ini['unicode.semantics'] && this.php_js.ini['unicode.semantics'].local_value.toLowerCase())) { case 'on': for (i = 0; i < str.length; i++) { if (/[\uD800-\uDBFF]/.test(str.charAt(i)) && /[\uDC00-\uDFFF]/.test(str.charAt(i + 1))) { allBMP = false; break; } } if (!allBMP) { if (start < 0) { for (i = end - 1, es = (start += end); i >= es; i--) { if (/[\uDC00-\uDFFF]/.test(str.charAt(i)) && /[\uD800-\uDBFF]/.test(str.charAt(i - 1))) { start--; es--; } } } else { var surrogatePairs = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g; while ((surrogatePairs.exec(str)) != null) { var li = surrogatePairs.lastIndex; if (li - 2 < start) { start++; } else { break; } } } if (start >= end || start < 0) { return false; } if (len < 0) { for (i = end - 1, el = (end += len); i >= el; i--) { if (/[\uDC00-\uDFFF]/.test(str.charAt(i)) && /[\uD800-\uDBFF]/.test(str.charAt(i - 1))) { end--; el--; } } if (start > end) { return false; } return str.slice(start, end); } else { se = start + len; for (i = start; i < se; i++) { ret += str.charAt(i); if (/[\uD800-\uDBFF]/.test(str.charAt(i)) && /[\uDC00-\uDFFF]/.test(str.charAt(i + 1))) { se++; } } return ret; } break; } case 'off': default: if (start < 0) { start += end; } end = typeof len === 'undefined' ? end : (len < 0 ? len + end : len + start); return start >= str.length || start < 0 || start > end ? !1 : str.slice(start, end); } return undefined; }
     function strlen(string) { var str = string + ''; var i = 0, chr = '', lgth = 0; if (!this.php_js || !this.php_js.ini || !this.php_js.ini['unicode.semantics'] || this.php_js.ini['unicode.semantics'].local_value.toLowerCase() !== 'on') { return string.length; } var getWholeChar = function (str, i) { var code = str.charCodeAt(i); var next = '', prev = ''; if (0xD800 <= code && code <= 0xDBFF) { if (str.length <= (i + 1)) { throw 'High surrogate without following low surrogate'; } next = str.charCodeAt(i + 1); if (0xDC00 > next || next > 0xDFFF) { throw 'High surrogate without following low surrogate'; } return str.charAt(i) + str.charAt(i + 1); } else if (0xDC00 <= code && code <= 0xDFFF) { if (i === 0) { throw 'Low surrogate without preceding high surrogate'; } prev = str.charCodeAt(i - 1); if (0xD800 > prev || prev > 0xDBFF) { throw 'Low surrogate without preceding high surrogate'; } return false; } return str.charAt(i); }; for (i = 0, lgth = 0; i < str.length; i++) { if ((chr = getWholeChar(str, i)) === false) { continue; } lgth++; } return lgth; }
@@ -957,7 +954,7 @@ function run_3wa_term_ptt_cc() {
                     var IMGURL = href;
                     for (var checkURL in whilePicsSites) {
                         if (window['my_3wa_func'].method.is_string_like(href, "%" + checkURL + "%") && whilePicsSites[checkURL]['needProxy']) {
-                            IMGURL = `https://proxy.duckduckgo.com/iu/?u=${encodeURIComponent(href)}`;
+                            IMGURL = `https://proxy.duckduckgo.com/iu/?u=${href}`;
                         }
                     }
 
@@ -1015,19 +1012,18 @@ function run_3wa_term_ptt_cc() {
                         */
                         preImg.src = IMGURL;
 
-                        jqDom.off(".my3waPreview").on("mouseleave.my3waPreview", function () {
-                            if (previewRace) previewRace.invalidate();
+                        jqDom.off().on("mouseleave", function () {
                             $("div[id^='myW_']").remove();
                         });
-                        jqDom.on("mouseenter.my3waPreview", function () {
+                        jqDom.on("mouseover", function (e) {
                             $("div[id^='myW_']").remove();
-                            var previewURL = $(this).attr('req_url') || IMGURL;
+                            var href = $(this).attr('href');
 
                             window['my_3wa_func'].method.myW(`
                         <div style="width:auto;pointer-events: none;">
                             <!--img reqc='imgXClose' src="${window['my_3wa_func']['icon']['x_close']}" style="cursor:pointer;position:absolute;width:32px;right:0px;top:0px;"-->
                             <img src="${window['my_3wa_func']['icon']['loading']}" style="width:32px;pointer-events: none;" reqc="theimgloading">
-                            <img reqc="theimg" style="pointer-events: none;display:none;">
+                            <img src="${IMGURL}" reqc="theimg" style="pointer-events: none;display:none;">
                         </div>
                         `, function (myWid) {
                                 clearTimeout(window['myWTimeout']);
@@ -1043,38 +1039,27 @@ function run_3wa_term_ptt_cc() {
                                 $("#" + myWid + " img[reqc='imgXClose']").off().on("click", { "myWid": myWid }, function (ee) {
                                     $("#" + ee.data.myWid).remove();
                                 });
-                                var $previewImg = $("#" + myWid + " img[reqc='theimg']");
-                                var onPreviewError = function () {
-                                    $("#" + myWid).remove();
-                                };
-                                var onPreviewLoad = function (loadedImage) {
-                                    //console.log("before: " + $(loadedImage).css('width'));
+                                $("#" + myWid + " img[reqc='theimg']").off().on("error", { "myWid": myWid }, function (ee) {
+                                    $("#" + ee.data.myWid).remove();
+                                });
+                                $("#" + myWid + " img[reqc='theimg']").off().on("load", { "myWid": myWid }, function (ee) {
+                                    //console.log("before: " + $(this).css('width'));
                                     $("#" + myWid + " img[reqc='theimgloading']").hide();
-                                    $previewImg.show();
-                                    $(loadedImage).css({
+                                    $("#" + myWid + " img[reqc='theimg']").show();
+                                    $(this).css({
                                         'opacity': 1,
                                         'max-width': '700px',
                                         'max-height': '700px'
                                     });
-                                    //console.log("after: " + $(loadedImage).css('width'));
-                                    $("#" + myWid).css({
-                                        "width": $(loadedImage).css('width'),
-                                        "height": $(loadedImage).css('height')
+                                    //console.log("after: " + $(this).css('width'));
+                                    $("#" + ee.data.myWid).css({
+                                        "width": $(this).css('width'),
+                                        "height": $(this).css('height')
                                     });
 
-                                    //$("#" + myWid).center();
+                                    //$("#" + ee.data.myWid).center();
                                     // 感覺偏右會比較好
-                                };
-                                if (previewRace) {
-                                    previewRace.load($previewImg[0], previewURL, onPreviewLoad, onPreviewError);
-                                }
-                                else {
-                                    // Keep a safe fallback if content.js is loaded manually
-                                    // without the extension's previewRace.js dependency.
-                                    $previewImg.on("error", onPreviewError).on("load", function () {
-                                        onPreviewLoad(this);
-                                    }).attr("src", previewURL);
-                                }
+                                });
 
                                 // Issue #8. 滑鼠移動到圖片連結時，展開圖片，移開馬上關掉
                                 /*if (location.href.indexOf("https://term.ptt.cc/") == 0 && window['my_3wa_func'].items.settings["term_ptt_cc_pic_delay_hide"]=="YES") {

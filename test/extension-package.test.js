@@ -34,7 +34,7 @@ describe('extension package structure', function () {
   it('injects local jQuery before the Chrome content script', function () {
     const background = read('my_term_ptt_pic_display_extension/background.js');
     const manifest = JSON.parse(read('my_term_ptt_pic_display_extension/manifest.json'));
-    expect(background).to.include("files: ['vendor/jquery-4.0.0.min.js', 'previewRace.js', 'content.js']");
+    expect(background).to.include("files: ['vendor/jquery-4.0.0.min.js', 'content.js']");
     expect(background.length).to.be.lessThan(3000);
     expect(manifest.web_accessible_resources[0].resources).to.include('assets/*');
   });
@@ -43,7 +43,6 @@ describe('extension package structure', function () {
     const manifest = JSON.parse(read('firefox_extension/my_term_ptt_pic_display_extension/manifest.json'));
     expect(manifest.content_scripts[0].js).to.deep.equal([
       'vendor/jquery-4.0.0.min.js',
-      'previewRace.js',
       'content.js'
     ]);
     expect(manifest.web_accessible_resources).to.include('assets/*');
@@ -51,8 +50,6 @@ describe('extension package structure', function () {
       .to.equal(read('my_term_ptt_pic_display_extension/content.js'));
     expect(read('firefox_extension/my_term_ptt_pic_display_extension/vendor/jquery-4.0.0.min.js'))
       .to.equal(read('my_term_ptt_pic_display_extension/vendor/jquery-4.0.0.min.js'));
-    expect(read('firefox_extension/my_term_ptt_pic_display_extension/previewRace.js'))
-      .to.equal(read('my_term_ptt_pic_display_extension/previewRace.js'));
     assetNames.forEach(name => {
       expect(fs.existsSync(path.join(firefoxDir, 'assets', name)), name).to.equal(true);
     });

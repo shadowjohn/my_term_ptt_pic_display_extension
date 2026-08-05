@@ -30,7 +30,6 @@ function copyRecursive($src, $dst) {
 $requiredFiles = [
     'manifest.json',
     'content.js',
-    'previewRace.js',
     'vendor/jquery-4.0.0.min.js'
 ];
 foreach ($requiredFiles as $file) {

@@ -6,6 +6,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
     chrome.scripting.executeScript({
         target: { tabId },
-        files: ['vendor/jquery-4.0.0.min.js', 'previewRace.js', 'content.js']
+        files: ['vendor/jquery-4.0.0.min.js', 'content.js']
     }).catch(error => console.error("PTT 圖片預覽注入失敗", error));
 });
