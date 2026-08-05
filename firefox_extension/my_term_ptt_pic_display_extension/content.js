@@ -935,8 +935,7 @@ function run_3wa_term_ptt_cc() {
                         return;
                     }
                     if (wasChecked) {
-                        if (previewRace) previewRace.invalidate();
-                        jqDom.off(".my3waPreview");
+                        jqDom.off();
                         $("div[id^='myW_']").remove();
                     }
                     jqDom.attr('my_3wa_term_ptt_cc_isCheckImg', "checked!");
