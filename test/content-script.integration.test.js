@@ -88,16 +88,25 @@ function loadContentScript() {
     }
     window.eval(readExtensionFile('content.js'));
 
+    // Keep a runtime witness for the method changed by PR #2.  The term.ptt.cc
+    // scanner should not call this legacy preview path.
+    const legacyPreview = window.my_3wa_func.method.img_mouseover_show;
+    let legacyPreviewCalls = 0;
+    window.my_3wa_func.method.img_mouseover_show = function legacyPreviewSpy() {
+        legacyPreviewCalls += 1;
+        return legacyPreview.apply(this, arguments);
+    };
+
     const scanner = intervals.find((entry) => entry.delay === 300);
     assert.ok(scanner, 'content.js should register its 300ms anchor scanner');
     scanner.callback();
 
-    return { dom, window };
+    return { dom, window, getLegacyPreviewCalls: () => legacyPreviewCalls };
 }
 
 describe('Firefox content.js hover preview integration', function () {
     it('shows the newest image when the browser completes it synchronously', function () {
-        const { dom, window } = loadContentScript();
+        const { dom, window, getLegacyPreviewCalls } = loadContentScript();
         const $ = window.jQuery;
 
         // This exercises the event handler installed by the real content.js,
@@ -109,6 +118,11 @@ describe('Firefox content.js hover preview integration', function () {
             new window.MouseEvent('mouseover', { bubbles: true, relatedTarget: window.document.body })
         );
 
+        assert.strictEqual(
+            getLegacyPreviewCalls(),
+            0,
+            'term.ptt.cc hover must use the anchor scanner path, not img_mouseover_show'
+        );
         const preview = window.document.querySelector("div[id^='myW_']");
         assert.ok(preview, 'hover should create a myW preview window');
         const image = $(preview).find("img[reqc='theimg']")[0];
