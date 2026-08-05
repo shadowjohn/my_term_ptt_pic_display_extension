@@ -3,8 +3,9 @@
   "version": "0.3.6",
   "private": true,
   "devDependencies": {
-    "mocha": "^10.2.0",
-    "chai": "^4.3.7"
+    "chai": "^4.3.7",
+    "jsdom": "^22.1.0",
+    "mocha": "^10.2.0"
   },
   "scripts": {
     "build:firefox": "php chrome2firefox.php",
