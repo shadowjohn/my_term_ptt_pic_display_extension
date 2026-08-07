@@ -25,7 +25,7 @@ describe('extension package structure', function () {
     expect(content).not.to.match(/\son(?:load|error)=/i);
     expect(content).not.to.match(/<script\b/i);
     expect(content).to.include("window['my_3wa_func'] = appClass;");
-    expect(content).to.include('appVersion: "0.3.6"');
+    expect(content).to.include('appVersion: "0.3.7"');
     assetNames.forEach(name => {
       expect(fs.existsSync(path.join(chromeDir, 'assets', name)), name).to.equal(true);
     });

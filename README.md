@@ -78,14 +78,15 @@ Google 應用程式線上商店
 - [安裝] https://addons.mozilla.org/zh-TW/firefox/addon/my_term_ptt_pic_display_plugin/ 
 
 下載最新版本：
-- [Chrome / Brave / Edge V0.3.6（2026-07-11）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.6/my_term_ptt_pic_display_extension.zip)
-- [Firefox V0.3.6（2026-07-11）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/firefox/V0.3.6/my_term_ptt_pic_display_extension.zip)
+- [Chrome / Brave / Edge V0.3.7（2026-08-07）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/V0.3.7/my_term_ptt_pic_display_extension.zip)
+- [Firefox V0.3.7（2026-08-07）](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/raw/main/release/firefox/V0.3.7/my_term_ptt_pic_display_extension.zip)
 
 ---
 
 ## 🗒️ 版本紀錄
-main（未發佈）
+V0.3.7 (2026-08-07)
 - 合併網友 [j108251113](https://github.com/j108251113) 的 [PR #3](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/pull/3)，修正 term.ptt.cc 切換畫面並重用既有連結節點時，圖片預覽仍指向舊網址的問題
+- 新增 GitHub Actions，自動驗證 pull request 與 main 的 Firefox 產物、測試及語法檢查
 
 V0.3.6 (2026-07-11)
 - 合併網友 [j108251113](https://github.com/j108251113) 的 [PR #2](https://github.com/shadowjohn/my_term_ptt_pic_display_extension/pull/2)，修正滑鼠快速切換圖片時的預覽競態，並加入單元測試
@@ -137,6 +138,7 @@ V0.01 (2025-05-23)
 - [✔] (V0.3.5) 11. 空白鍵也要關閉圖片預覽
 - [✔] (V0.3.6) 12. 修正快速切換圖片時，舊圖片載入覆蓋新預覽的競態問題（PR #2）
 - [✔] (V0.3.6) 13. jQuery、主程式與圖片資產分檔，並重整 Firefox 產生流程
+- [✔] (V0.3.7) 14. 修正 term.ptt.cc 切換畫面時重用連結節點，導致仍預覽舊圖片的問題（PR #3）
 
 ---
 
