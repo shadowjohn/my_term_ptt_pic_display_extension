@@ -890,12 +890,8 @@ function run_3wa_term_ptt_cc() {
                 $("a").each(function (i, dom) {
                     //console.log(dom);
                     var jqDom = $(dom);
-
-                    if (jqDom.attr('my_3wa_term_ptt_cc_isCheckImg') != null) {
-                        isFoundURL.push(jqDom.attr('req_url'));
-                        return;
-                    }
-                    jqDom.attr('my_3wa_term_ptt_cc_isCheckImg', "checked!"); // 有檢查過了                    
+                    var wasChecked = jqDom.attr('my_3wa_term_ptt_cc_isCheckImg') != null;
+                    var checkedHref = jqDom.attr('my_3wa_term_ptt_cc_checked_href');
                     var href = jqDom.attr('href');
                     //console.log(window['my_3wa_func']);
                     // jpg->jpeg
@@ -930,6 +926,20 @@ function run_3wa_term_ptt_cc() {
                     // 有87會用 [img][/img]
                     href = href.replace("[/img]", "", href);
                     jqDom.attr('href', href);
+
+                    // term.ptt.cc reuses anchor nodes while the terminal screen
+                    // changes. Re-check a marked anchor when its href changed;
+                    // otherwise its old handler keeps previewing the old image.
+                    if (wasChecked && checkedHref === href) {
+                        isFoundURL.push(jqDom.attr('req_url'));
+                        return;
+                    }
+                    if (wasChecked) {
+                        jqDom.off();
+                        $("div[id^='myW_']").remove();
+                    }
+                    jqDom.attr('my_3wa_term_ptt_cc_isCheckImg', "checked!");
+                    jqDom.attr('my_3wa_term_ptt_cc_checked_href', href);
 
 
                     var whilePicsSites = {
